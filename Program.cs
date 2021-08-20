@@ -120,7 +120,7 @@ internal static class Examples
             };
             Implementation.WriteObj(
                 buffer.Slice(size * i),
-                ref obj
+                obj
             );
 
             Console.WriteLine($"Writing {i} object: {obj}");
@@ -197,11 +197,11 @@ internal static class Implementation
 
     public static void CopyToBuff<T>(ref T value, Span<byte> buffer) where T : class
     {
-        WriteObj<T>(buffer, ref value);
+        WriteObj<T>(buffer, value);
         RefReadObj<T>(buffer, ref value!); // Just to avoid unnecessary warnings
     }
 
-    public static void WriteObj<T>(Span<byte> buffer, ref T value) where T : class 
+    public static void WriteObj<T>(Span<byte> buffer, T value) where T : class 
     {
         _ = value ?? throw new ArgumentNullException();
         var size = SizeOf<T>();
