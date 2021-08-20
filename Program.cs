@@ -210,7 +210,7 @@ internal static class Implementation
             throw new ArgumentOutOfRangeException(nameof(buffer));
         }
         // Equivalent to something like 
-        // `object` -> `(object, RuntimeTypeHandle)`
+        // `object` -> `(object*, RuntimeTypeHandle)`
         TypedReference typedRef = __makeref(value);
 
         // `ref nint` is basically `void**`
