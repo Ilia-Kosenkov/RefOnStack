@@ -72,14 +72,14 @@ Example:
 
 
 ## Example two
-Store multiple object side by side in an array.
+Store multiple objects side by side in an array.
 With the ability to write any object to an arbitrary block of `Span<byte>` memory, it is easy to emplace multiple objects next to each other (knowing the actual size of underlying data).
 The challenge is to retrieve those objects.
-Two methods are provided: `RefReadObj<T>(Span<byte>, ref T?)` and `CopyObj<T>(Span<byte>)`.
+Two methods are provided: `RefReadObj<T>(Span<byte>, ref T?)` and `T CopyObj<T>(Span<byte>)`.
 The first one assigns to `ref T` value, which data pointer points to `Span<byte>`, directly,
 In principle, if the layout of class is known (which is difficult to predict), one can write to `Span<byte>` and observe changes in returned `ref T`.
 The second one returns a shallow copy of the object stored in `Span<byte>`. This newly-constructed object is a regular object residing in managed heap, yet all its fields have their values set from the data stored in the memory chunk.
-Speaking in terms of structs, `RefReadObj<T>` acts as ref indexer (`ref T[]` when `T` is a struct), while `CopyObj<T>` acts as just indexer (`T[]` when `T` is a struct, performing copy).
+Speaking in terms of structs, `RefReadObj<T>` acts as ref indexer (`ref T[]` when `T` is a struct), while `T CopyObj<T>` acts as just indexer (`T[]` when `T` is a struct, performing copy).
 
 <details>
 <summary>Sample output</summary>
