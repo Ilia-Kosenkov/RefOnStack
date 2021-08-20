@@ -1,5 +1,5 @@
 ﻿// Inspired by
-// See https://blog.adamfurmanek.pl/2016/04/23/custom-memory-allocation-in-c-part-1/
+// https://blog.adamfurmanek.pl/2016/04/23/custom-memory-allocation-in-c-part-1/
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Buffers;
@@ -12,6 +12,7 @@ Examples.ArrayPoolExample();
 Examples.UnmanagedExample();
 
 Examples.TestCollection(10);
+
 internal static class Examples 
 {
     
